@@ -1,0 +1,314 @@
+{
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "=POST",
+        "path": "5c7a866f-a811-442d-9cfb-dc5c1d348afe",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        -976,
+        288
+      ],
+      "name": "Loan application trigger",
+      "webhookId": "5c7a866f-a811-442d-9cfb-dc5c1d348afe",
+      "id": "c7958fdf-4dff-4f2f-8731-928f4416b871"
+    },
+    {
+      "parameters": {
+        "mode": "raw",
+        "jsonOutput": "={\n  \"borrower_name\": \"{{ $json.body.full_name }}\",\n  \"borrower_email\": \"{{ $json.body.email }}\",\n  \"borrower_phone\": \"{{ $json.body.phone_number }}\",\n  \"loan_amount\": \"{{ $json.body.amount }}\",\n  \"loan_purpose\": \"{{ $json.body.reason }}\",\n  \"org_name\": \"{{ $json.body.org_name }}\",\n  \"org_id\": \"{{ $json.body.org_id }}\", \n  \"country\": \"{{ $json.body.country }}\",\n  \"country_code\": \"{{ $json.body.country_code }}\",\n  \"city\": \"{{ $json.body.city }}\",\n  \"page_url\": \"{{ $json.body.page_url }}\",\n  \"street\": \"{{ $json.body.street }}\",\n  \"tenor\": \"{{ $json.body.tenor }}\",\n  \"tenor_period\": \"{{ $json.body.tenor_period }}\"\n}\n",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        -752,
+        288
+      ],
+      "name": "Pulls borrower's data",
+      "id": "4be84025-2960-4345-9d13-5d7214688794"
+    },
+    {
+      "parameters": {
+        "mode": "combineBySql",
+        "query": "SELECT\n  input1.primary_email,\n  input2.borrower_name,\n  input2.borrower_email,\n  input2.borrower_phone,\n  input2.loan_amount,\n  input2.loan_purpose,\n  input2.org_name,\n  input2.org_id,\n  input2.country,\n  input2.country_code,\n  input2.city,\n  input2.page_url,\n  input2.street,\n  input2.tenor,\n  input2.tenor_period\nFROM input1\nJOIN input2\nON input1.org_id = input2.org_id;\n"
+      },
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 3.1,
+      "position": [
+        -304,
+        288
+      ],
+      "name": "Merge",
+      "id": "31346478-a365-4e39-84e6-8fabc82b2d1e"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "1ab26bab-27c9-47bb-85b7-dd9834e660c3",
+              "name": "Borrower name",
+              "value": "={{ $json.borrower_name }}",
+              "type": "string"
+            },
+            {
+              "id": "c73719e5-eb98-4aad-b004-2d65dd474678",
+              "name": "Loan amount",
+              "value": "={{ $json.currency }} {{ $json.loan_amount }}",
+              "type": "string"
+            },
+            {
+              "id": "7668049a-cc3c-4013-bc18-533be7bd2527",
+              "name": "Purpose",
+              "value": "={{ $json.loan_purpose }}",
+              "type": "string"
+            },
+            {
+              "id": "d209825c-83a5-4710-b863-b700fcbc17d5",
+              "name": "Tenor",
+              "value": "={{ $json.tenor }} {{ $json.tenor_period }}",
+              "type": "string"
+            },
+            {
+              "id": "b616f652-41e1-4deb-b5a1-9510bf8ef9a7",
+              "name": "=Email type",
+              "value": "lender_notification",
+              "type": "string"
+            },
+            {
+              "id": "f12865e3-f191-430f-acb4-324d8dfbd636",
+              "name": "=Email type",
+              "value": "borrower_confirmation",
+              "type": "string"
+            },
+            {
+              "id": "ed00ce19-0ae9-4a7d-9dec-667e13e084f2",
+              "name": "Email type",
+              "value": "borrower_follow-up",
+              "type": "string"
+            }
+          ]
+        },
+        "includeOtherFields": true,
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        144,
+        288
+      ],
+      "name": "Edit Fields",
+      "id": "804b66dd-bb97-49ad-bd83-5f01cdb6f9a6"
+    },
+    {
+      "parameters": {
+        "jsCode": "const countryCurrencyMap = {\n  \"Rwanda\": \"FRw\",\n  \"South Africa\": \"R\",\n  \"Ethiopia\": \"Br\",\n  \"Tanzania\": \"TSh\",\n  \"Ghana\": \"GH₵\",\n  \"Uganda\": \"UGX\",\n  \"Zambia\": \"ZK\",\n  \"Zimbabwe\": \"Z$\",\n  \"Malawi\": \"MK\",\n  \"Sierra Leone\": \"Le\",\n  \"Namibia\": \"N$\",\n  \"Botswana\": \"P\",\n  \"Liberia\": \"L$\",\n  \"Benin\": \"FCFA\",\n  \"Gambia\": \"D\",\n  \"Lesotho\": \"L\",\n  \"Canada\": \"$\",\n  \"Caribbean\": \"$\",\n  \"United States\": \"$\",\n  \"United Kingdom\": \"£\",\n  \"Nigeria\": \"₦\",\n  \"Kenya\": \"KSh\",\n  \"France\": \"€\",\n  \"Morocco\": \"MAD\",\n  \"Default\": \"₦\"\n};\n\n// If your input uses country codes (like NGA for Nigeria), map them first\nconst countryCodeMap = {\n  \"RWA\": \"Rwanda\",\n  \"ZAF\": \"South Africa\",\n  \"ETH\": \"Ethiopia\",\n  \"TZA\": \"Tanzania\",\n  \"GHA\": \"Ghana\",\n  \"UGA\": \"Uganda\",\n  \"ZMB\": \"Zambia\",\n  \"ZWE\": \"Zimbabwe\",\n  \"MWI\": \"Malawi\",\n  \"SLE\": \"Sierra Leone\",\n  \"NAM\": \"Namibia\",\n  \"BWA\": \"Botswana\",\n  \"LBR\": \"Liberia\",\n  \"BEN\": \"Benin\",\n  \"GMB\": \"Gambia\",\n  \"LSO\": \"Lesotho\",\n  \"CAN\": \"Canada\",\n  \"CAR\": \"Caribbean\",\n  \"USA\": \"United States\",\n  \"GBR\": \"United Kingdom\",\n  \"NGA\": \"Nigeria\",\n  \"KEN\": \"Kenya\",\n  \"FRA\": \"France\",\n  \"MAR\": \"Morocco\",\n  \"DEF\": \"Default\"\n};\n\nreturn items.map(item => {\n  const countryCode = item.json.country_code || item.json.country;\n  const countryName = countryCodeMap[countryCode] || item.json.country;\n  const currency = countryCurrencyMap[countryName] || countryCurrencyMap[\"Default\"];\n\n  return {\n    json: {\n      ...item.json,\n      currency: currency\n    }\n  };\n});\n"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        -80,
+        288
+      ],
+      "name": "Code",
+      "id": "324e46b0-24ff-44a5-9ff4-7a44f54e6232"
+    },
+    {
+      "parameters": {
+        "resource": "mail",
+        "fromEmail": "noreply@yourdomain.com",
+        "fromName": "company",
+        "toEmail": "={{ $json.primary_email }}",
+        "subject": "You've received a loan request from user who saw you on our website!",
+        "contentType": "text/html",
+        "contentValue": "=",
+        "additionalFields": {}
+      },
+      "type": "n8n-nodes-base.sendGrid",
+      "typeVersion": 1,
+      "position": [
+        368,
+        384
+      ],
+      "name": "Lender notification",
+      "id": "971d2679-4772-4153-a46f-dd13fa8ffab5"
+    },
+    {
+      "parameters": {
+        "resource": "mail",
+        "fromEmail": "noreply@yourdomain.com",
+        "fromName": "=company",
+        "toEmail": "={{ $json.borrower_email }}",
+        "subject": "We got your loan request!",
+        "contentType": "text/html",
+        "contentValue": "=",
+        "additionalFields": {}
+      },
+      "type": "n8n-nodes-base.sendGrid",
+      "typeVersion": 1,
+      "position": [
+        368,
+        192
+      ],
+      "name": "Borrower confirmation",
+      "id": "daa15450-8e03-4173-8647-97782a78d728"
+    },
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.wait",
+      "typeVersion": 1.1,
+      "position": [
+        592,
+        192
+      ],
+      "name": "Wait",
+      "webhookId": "300085dd-0b5b-46b7-aa57-38ba62f8a16e",
+      "id": "7bdff076-9ac0-450a-8efc-994bf210905b"
+    },
+    {
+      "parameters": {
+        "resource": "mail",
+        "fromEmail": "noreply@yourdomain.com",
+        "fromName": "=company",
+        "toEmail": "={{ $('Edit Fields').item.json.borrower_email }}",
+        "subject": "Checking in on your loan application",
+        "contentType": "text/html",
+        "contentValue": "=",
+        "additionalFields": {}
+      },
+      "type": "n8n-nodes-base.sendGrid",
+      "typeVersion": 1,
+      "position": [
+        816,
+        192
+      ],
+      "name": "Borrower follow-up",
+      "id": "7a2de661-b06c-4579-8e72-f4b2a948b694"
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "SELECT id AS org_id, primary_email\nFROM pecunia.organizations\nWHERE id = '{{ $json.org_id }}';\n",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.mySql",
+      "typeVersion": 2.4,
+      "position": [
+        -528,
+        208
+      ],
+      "name": " Get lenders emailfrom DB",
+      "id": "40160541-5133-41dc-8a0e-a4cc0f5485d8",
+      "disabled": true
+    }
+  ],
+  "connections": {
+    "Loan application trigger": {
+      "main": [
+        [
+          {
+            "node": "Pulls borrower's data",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Pulls borrower's data": {
+      "main": [
+        [
+          {
+            "node": " Get lenders emailfrom DB",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Merge",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "Merge": {
+      "main": [
+        [
+          {
+            "node": "Code",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields": {
+      "main": [
+        [
+          {
+            "node": "Borrower confirmation",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Lender notification",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Borrower confirmation": {
+      "main": [
+        [
+          {
+            "node": "Wait",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Wait": {
+      "main": [
+        [
+          {
+            "node": "Borrower follow-up",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    " Get lenders emailfrom DB": {
+      "main": [
+        [
+          {
+            "node": "Merge",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "pinData": {},
+  "meta": {
+    "instanceId": "84c014326353d458f677e243fcbf9d8b6ac995bd8102e1c188ecfd31d8e4b82c"
+  }
+}

@@ -1,38 +1,105 @@
 # Automation Portfolio
 
-AI-powered security & business automation systems built for SMEs.
+A collection of automation workflows and AI systems built with n8n, Zapier, and large language models. Each project solves a real operational problem for a specific business type — from financial services to real estate to recruitment.
 
-Each project solves a real business problem, runs 24/7 without manual work, and is documented for client delivery.
+---
+
+## What I Build
+
+I help businesses eliminate manual workflows and build systems that run themselves. My focus is on the full picture: the automation, the logic behind it, the edge cases, and the operational outcome.
+
+**AI Agents & Chatbots**
+- Conversational agents with memory and tool use
+- RAG pipelines with semantic search
+- Voice note transcription and processing
+- Lead capture and qualification flows
+
+**Business Process Automation**
+- End-to-end workflow automation with n8n and Zapier
+- Multi-step conditional logic and error handling
+- CRM integration and data management
+- Automated notifications and follow-up sequences
+
+**Data & Operations**
+- Google Sheets and Airtable automation
+- Email routing and classification systems
+- Calendar booking and scheduling automation
+- Document ingestion and knowledge base setup
+
+---
+
+## Tech Stack
+
+- **Automation:** n8n, Zapier
+- **AI/LLM:** OpenAI (GPT-4o-mini, GPT-4.1-mini), Groq, Ollama (llama3)
+- **Vector Database:** Supabase (pgvector)
+- **CRM/Data:** Google Sheets, Airtable, Notion
+- **Communication:** Telegram, Gmail, Slack
+- **Audio:** OpenAI Whisper, Groq Whisper (speech-to-text)
+- **Other:** html2pdf.app, Open-Meteo, Typeform, Tally, Monday.com
+
+---
 
 ## Projects
 
-### 🔴 Project 1 — Automated Lead Pipeline
-**Folder:** `project-1-lead-pipeline`
+Each folder contains the workflow file (or screenshots), a README with the problem, solution, and logic breakdown, and setup instructions where applicable.
 
-Captures leads from Google Forms, classifies them with AI as HOT/WARM/COLD, sends instant personalised emails, alerts the owner on Telegram, and automatically follows up after 24 hours if there's no reply.
+| Project | Platform | Industry |
+|---|---|---|
+| [AI Real Estate Chatbot](./ai_agent_chatbot/) | n8n | Real Estate |
+| [AI Email Routing System](./ai-email-routing-system/) | n8n | Operations |
+| [Customer Support Intelligent Pipeline](./Customer%20Support%20Intelligent%20Pipeline/) | n8n | Support |
+| [ICE Risk Monitor](./ice-risk-monitor/) | n8n | Property Management |
+| [Loan Eligibility & Offer Management](./loan-eligibility-automation/) | n8n | Financial Services |
+| [Loan Application Email Notification](./loan-application/) | n8n | Financial Services |
+| [Human-in-the-Loop ATS](./Human-in-the-loop-ATS-for-recruiting-agencies/) | n8n | Recruitment |
+| [Structured Enquiry & Booking Bot](./Structured-Enquiry-Booking-System/) | n8n | Service Business |
+| [Vendor Onboarding (International Ops)](./Vendor%20Onboarding%20%28International%20Operations%29/) | n8n | Operations |
+| [CMS Content Upload Automation](./cms-content-upload/) | n8n | Content / Marketing |
+| [Automated Lead Pipeline](./Lead-pipeline/) | n8n | Sales |
+| [Weekly Business Report](./Weekly-Business-Report/) | n8n | Operations |
+| [Job Application Screening System](./Job-application-screening-system-on-zapier/) | Zapier | HR / Recruitment |
+| [Client Onboarding System](./client-onboarding-system-on-zapier/) | Zapier | Operations |
 
-**Built for:** Agencies, real estate, any business running inbound forms
-**Tools:** n8n · Ollama · Google Forms · Airtable · Gmail · Telegram
+---
 
-→ [View Project](./project-1-lead-pipeline/README.md)
+## Using These Workflows
 
-### 📊 Project 2 — Weekly Business Report
-**Folder:** `project-2-business-reporting`
+Each project folder contains everything you need to get it running:
 
-Reads weekly sales data from Google Sheets every Monday at 7AM, uses AI to write a plain-English 5-sentence business summary, and delivers it automatically to the owner's email and Telegram.
+- Workflow JSON file ready to import into n8n (where applicable)
+- Setup documentation explaining how it works
+- API and credential configuration guide
+- Customisation instructions for your use case
 
-**Built for:** Retail stores, logistics, agencies, any founder who needs weekly visibility
-**Tools:** n8n · Ollama · Google Sheets · Gmail · Telegram
+### How to Get Started
 
-→ [View Project](./project-2-business-reporting/README.md)
+1. Import the workflow JSON into your n8n instance
+2. Add your credentials for the connected services
+3. Update any IDs — Google Sheets, Supabase, API endpoints
+4. Adjust the workflow to fit your use case
+5. Test with sample data before going live
+6. Deploy and monitor
 
-## About
+---
 
-**Ibukun Babalola**
-AI Security and Business Automation Engineer
+## License
 
-I build AI automation systems for businesses — lead pipelines, business reporting, security workflows, and custom automations that save teams hours every week.
+MIT License — use, adapt, and build on anything here freely.
 
-- 💼 [LinkedIn](https://linkedin.com/in/babalola-ibukun/)
-- 🐦 [Twitter/X](https://twitter.com/ib2dk207)
-- 📧 [Email](mailto:babsib2dk@gmail.com)
+---
+
+## Let's Work Together
+
+I'm available for freelance projects, contract work, and consulting on automation strategy.
+
+**Ibukun Babalola** — AI & Business Automation Engineer
+
+- GitHub: [github.com/ib2dk](https://github.com/ib2dk)
+- LinkedIn: [linkedin.com/in/chibugo136](https://www.linkedin.com/in/chibugo136/)
+- Twitter/X: [x.com/ib2dk207](https://x.com/ib2dk207)
+- Email: babsib2dk@gmail.com
+
+---
+
+*Always building. Always learning.*

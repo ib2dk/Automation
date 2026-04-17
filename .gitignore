@@ -1,0 +1,11 @@
+# Internal tooling — do not commit
+WAT CLAUDE.md
+
+# OS
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Temp
+*.tmp
+*.log
