@@ -96,7 +96,7 @@ I'm available for freelance projects, contract work, and consulting on automatio
 **Ibukun Babalola** — AI & Business Automation Engineer
 
 - GitHub: [github.com/ib2dk](https://github.com/ib2dk)
-- LinkedIn: [linkedin.com/in/chibugo136](https://www.linkedin.com/in/chibugo136/)
+- LinkedIn: [https://www.linkedin.com/in/babalola-ibukun/)
 - Twitter/X: [x.com/ib2dk207](https://x.com/ib2dk207)
 - Email: babsib2dk@gmail.com
 
