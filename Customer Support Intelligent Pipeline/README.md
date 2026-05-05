@@ -1,13 +1,13 @@
 # 🛒 Customer Support Intelligence Pipeline
 <img width="1634" height="594" alt="Screenshot 2026-04-08 155317" src="https://github.com/user-attachments/assets/9ca95038-cc31-4736-a372-08b0d5bef3d8" />
 
-> An end-to-end AI-powered customer support automation system built for an ecommerce brand. Incoming customer messages are classified, scored, escalated where necessary, and routed into a live operations dashboard — with zero manual intervention.
+> An end-to-end AI-powered customer support automation system built for an ecommerce brand. Incoming customer messages are classified, scored, escalated where necessary and routed into a live operations dashboard — with zero manual intervention.
 
 ---
 
 ## 📌 Project Overview
 
-E-commerce support teams spend hours every day reading, categorising, and routing the same types of customer messages. This pipeline replaces that manual work entirely.
+E-commerce support teams spend hours every day reading, categorising and routing the same types of customer messages. This pipeline replaces that manual work entirely.
 
 Every incoming message is processed through an AI classification layer that identifies the issue type, detects customer sentiment, assesses urgency, and assigns a confidence score. A guardrail then decides whether the case needs human review or can be auto-resolved. All data flows into a Monday.com operations board where support trends, escalation rates, and bottlenecks are tracked in real time.
 
