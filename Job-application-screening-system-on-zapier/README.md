@@ -1,6 +1,6 @@
 # Automated Job Application Screening System — Zapier
 
-A two-Zap automated hiring pipeline that screens, routes, and summarises job applications in real time. Built for a technical hiring team receiving 20–50 applications weekly. HR no longer reads applications that don't qualify; the system handles it automatically.
+A two-Zap automated hiring pipeline that screens, routes, and summarises job applications in real time. Built for a technical hiring team receiving 20–50 applications weekly. HR no longer reads applications that don't qualify; the system handles everything automatically.
 
 ---
 
