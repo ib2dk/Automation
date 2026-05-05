@@ -1,4 +1,4 @@
-# Credentials & secrets
+# Credentials & secrets.
 .env
 .env.local
 *.env
