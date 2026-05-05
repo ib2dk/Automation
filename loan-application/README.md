@@ -5,6 +5,7 @@
 
 An automated email workflow that handles the full communication cycle when a borrower applies for a loan through a lending directory. The system notifies the matched lender, acknowledges the borrower, and follows up automatically after a set waiting period.
 
+
 ---
 
 ## What It Does
@@ -168,6 +169,6 @@ Built for a lending directory platform where borrowers browse and apply to lende
 ---
 
 - **Built by Babalola Ibukun — (https://github.com/ib2dk/Automation)**
-- **LinkedIn: https://www.linkedin.com/in/chibugo136/**
+- **LinkedIn: (https://www.linkedin.com/in/babalola-ibukun/)**
 - **Email:** babsib2dk@gmail.com
 - **Twitter/X: https://x.com/ib2dk207**
