@@ -199,6 +199,6 @@ Zero infrastructure overhead. For a small-to-medium lending operation, Sheets pr
 
 
 - **Built by Babalola Ibukun — (https://github.com/ib2dk/Automation)**
-- **LinkedIn: https://www.linkedin.com/in/chibugo136/**
+- **LinkedIn: (https://www.linkedin.com/in/babalola-ibukun/)**
 - **Email:** babsib2dk@gmail.com
 - **Twitter/X: https://x.com/ib2dk207**
