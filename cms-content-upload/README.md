@@ -6,6 +6,7 @@ An n8n workflow that automates bulk uploading of provider/directory data from Go
 
 ---
 
+
 ## What It Does
 
 Reads provider records from a Google Sheets queue, creates a draft entry in the CMS for each record, publishes it immediately, then deletes the processed row from the sheet — working through the queue batch by batch until all records are published.
