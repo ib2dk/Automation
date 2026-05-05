@@ -246,6 +246,6 @@ Without this guard, every time the recruiter saves the record while it's in `Int
 Drive provides a persistent, organized, shareable location for resumes that the team can access directly. Airtable attachment limits and file management are avoided entirely.
 
 - **Built by Babalola Ibukun — (https://github.com/ib2dk/Automation)**
-- **LinkedIn: https://www.linkedin.com/in/chibugo136/**
+- **LinkedIn: (https://www.linkedin.com/in/babalola-ibukun/)**
 - **Email:** babsib2dk@gmail.com
 - **Twitter/X: https://x.com/ib2dk207**
