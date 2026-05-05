@@ -145,6 +145,6 @@ Zero setup friction for a small business owner. The salon owner can see every le
 n8n workflows are stateless by default. Every incoming Telegram message triggers the workflow fresh. Storing conversation stage in Sheets gives the workflow memory across turns without needing a database.
 
 - **Built by Babalola Ibukun — (https://github.com/ib2dk/Automation)**
-- **LinkedIn: https://www.linkedin.com/in/chibugo136/**
+- **LinkedIn: (https://www.linkedin.com/in/babalola-ibukun/)**
 - **Email:** babsib2dk@gmail.com
 - **Twitter/X: https://x.com/ib2dk207**
