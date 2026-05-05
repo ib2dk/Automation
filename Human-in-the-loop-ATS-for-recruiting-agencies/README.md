@@ -63,7 +63,7 @@ Typeform Trigger
 **Typeform fields captured:**
 - First Name, Last Name, Email, Phone Number, Address
 - Position Applied For
-- Drop a link to your resume (Google Drive URL)
+- Drop a link to your resume (Google Drive URL or others)
 
 **Airtable record created with:**
 
