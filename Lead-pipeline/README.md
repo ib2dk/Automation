@@ -2,7 +2,7 @@
 
 ## What Problem It Solves
 
-Most businesses lose leads not because their product is bad — but because nobody followed up fast enough. This system ensures every lead gets an instant response and an automatic follow-up if they go quiet, without anyone doing it manually.
+Most businesses lose leads not because their product is bad — but because nobody followed up fast enough. This system ensures every lead gets an instant response and an automatic follow-up if they go quiet, without manual work.
 
 ## Who It's Built For
 
