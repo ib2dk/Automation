@@ -1,4 +1,4 @@
-# Credentials and sensitive data
+# Credentials and sensitive data.
 credentials.json
 .env
 .env.local
