@@ -209,6 +209,6 @@ Each task record links back to the triggering Client Intake record via a linked 
 
 
 - **Built by Babalola Ibukun — (https://github.com/ib2dk/Automation)**
-- **LinkedIn: https://www.linkedin.com/in/chibugo136/**
+- **LinkedIn: (https://www.linkedin.com/in/babalola-ibukun/)**
 - **Email:** babsib2dk@gmail.com
 - **Twitter/X: https://x.com/ib2dk207**
